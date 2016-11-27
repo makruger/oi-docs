@@ -17,13 +17,13 @@ All Rights Reserved. (Contributor contact(s):________________[Insert hyperlink/a
 
 -->
 
-# OpenIndiana Handbook - Network Communications
+# Hipster Handbook - Network Communications
 
-<!-- NOTE: --> <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
 <div class="well">
-
-This document is a work in progress (draft).
-
+<p>This is a <b>DRAFT</b> document which may contain errors!</p>
+<p>Help us improve and expand this site.</p>
+<p>Please see the <b>Contrib</b> section for more details about joining the OpenIndiana Documentation Team.</p>
 </div>
 
 < Place holder for Introduction content >
@@ -65,7 +65,7 @@ This document is a work in progress (draft).
 < Place holder for content >
 
 
-## Using OpenIndiana as a NAS
+## Hipster as a NAS
 
 OpenIndiana provides several ways to share data with network clients.
 
@@ -97,7 +97,7 @@ Also have a look at the [OpenSolaris CIFS Administration Guide](https://docs.ora
 </div>
 
 
-### Configuring OpenIndiana as a CIFS Server
+### Hipster as a CIFS server (workgroup)
 
 < Placeholder for introduction content >
 
@@ -186,7 +186,17 @@ You can create additional CIFS datasets using the following 4 commands.
 * `sharemgr show -vp`
 
 
-#### Configuring CIFS/SMB Linux client connectivity
+### Hipster as a CIFS server (domain)
+
+< Placeholder for introduction content >
+
+
+### Hipster as a SAMBA server
+
+< Place holder for content >
+
+
+### Configuring CIFS/SMB client connectivity
 
 < Place holder for content >
 
@@ -215,47 +225,42 @@ You can create additional CIFS datasets using the following 4 commands.
 < Place holder for content >
 
 
-### Configuring OpenIndiana as a SAMBA Server
+### Hipster as an NFS server
 
 < Place holder for content >
 
 
-### Configuring OpenIndiana as an NFS server
+## Hipster as an NIS server
 
 < Place holder for content >
 
 
-## Configuring OpenIndiana as an NIS server
+## Hipster as an LDAP server
 
 < Place holder for content >
 
 
-## Configuring OpenIndiana as an LDAP server
+## Hipster as a DHCP server
 
 < Place holder for content >
 
 
-## Configuring OpenIndiana as a DHCP server
+## Hipster as an FTP server
 
 < Place holder for content >
 
 
-## Configuring OpenIndiana as an FTP server
+## Hipster as a DNS server
 
 < Place holder for content >
 
 
-## Configuring OpenIndiana as a DNS server
+## Hipster as a NTP server
 
 < Place holder for content >
 
 
-## Configuring OpenIndiana as a NTP server
-
-< Place holder for content >
-
-
-## Configuring OpenIndiana as a INETD server
+## Hipster as a INETD server
 
 < Place holder for content >
 

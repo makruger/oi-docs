@@ -17,13 +17,13 @@ All Rights Reserved. (Contributor contact(s):________________[Insert hyperlink/a
 
 -->
 
-# OpenIndiana Handbook - System Administration
+# Hipster Handbook - System Administration
 
-<!-- NOTE: --> <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
 <div class="well">
-
-This document is a work in progress (draft).
-
+<p>This is a <b>DRAFT</b> document which may contain errors!</p>
+<p>Help us improve and expand this site.</p>
+<p>Please see the <b>Contrib</b> section for more details about joining the OpenIndiana Documentation Team.</p>
 </div>
 
 < place holder for introduction content >
@@ -46,7 +46,31 @@ This document is a work in progress (draft).
 
 ### Service management (SMF)
 
-< place holder >
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **DOC TEAM NOTE:**
+<div class="well">
+ITEMS TO WRITE ABOUT:
+
+Start a service
+
+`svcadm enable <service name>`
+
+Start service along with it's dependencies
+
+`svcadm enable -r <service name>`
+
+Start a service temporarily (won't survive a reboot)
+
+`svcadm enable -t <service name>`
+
+Check service dependencies
+
+`svcs -d <service name >`
+
+Check status of services
+
+`svcs -vx`
+
+</div>
 
 
 ### Systems logging and monitoring
@@ -129,11 +153,31 @@ Here are just a few of them:
 
 ### ZFS
 
-< place holder >
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **DOC TEAM NOTE:**
+<div class="well">
+ITEMS TO WRITE ABOUT:
+
+Gotcha's such as the following:
+
+```
+<e^ipi> don't suppose there's any solution to this:
+<e^ipi> cannot replace 1509280528045021472 with /dev/dsk/c0t5000C5009204EB9Bd0s0: devices have different sector alignment
+<tsoome> thats 512 versus non-512 sector issue
+<tsoome> you need to build new pool based on larger sector
+<tsoome> if its mirror, you can attach 512B disk to 4k pool, but not vice versa...
+<e^ipi> well, damn.
+<tsoome> that error message is too confusing, should be replaced by more clear one;)
+<e^ipi> I swear this pool is already mix & match, freebsd complained about it
+<e^ipi> (but still used it)
+<tsoome> there is that thing that ashift is vdev property;)
+<tsoome> not pool property (one reason why that linux zpool create ashift= option is bad)
+<tsoome> or sort of bad anyhow
+```
+
+</div>
 
 
 #### Importing ZFS disks
-
 
 <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **DOC TEAM NOTE:**
 <div class="well">
@@ -351,7 +395,7 @@ Restart
 :~$ sudo reboot
 ```
 
-<!-- NOTE: --> <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
 <div class="well">
 IF you cannot ping an external IP (e.g. google.com) run this command and try again.
 </div>
@@ -416,6 +460,10 @@ Right click the NWAM tray icon and select **_Location_ > _Automatic_**.
 
 ## Clustering with Open HA Cluster
 
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **DOC TEAM NOTE:**
+<div class="well">
+ITEMS TO WRITE ABOUT:
+
 See old sun docs
 
 * <http://docs.oracle.com/cd/E19735-01/>
@@ -423,3 +471,6 @@ See old sun docs
 Also see:
 
 * <http://zfs-create.blogspot.nl/>
+
+</div>
+

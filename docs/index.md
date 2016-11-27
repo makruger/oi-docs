@@ -1,8 +1,11 @@
 <div class="jumbotron">
   <img src = "Openindiana.png">
   <h1>Welcome to OpenIndiana Docs!</h1>
-  </br>
-  <p> - Hosted by the OpenIndiana Documentation Team.</p>
+  <br>
+  <h2>Home of the <b>Hipster Handbook</b></h2>
+  <br>
+  <p>This site contains <b>DRAFT</b> documentation which may contain errors!</p>
+  <p>Please help us improve and expand this site. See the <b>Contrib</b> section for more details about joining the OpenIndiana Documentation Team.</p>
 </div>
 
 <div class="col-sm-6">

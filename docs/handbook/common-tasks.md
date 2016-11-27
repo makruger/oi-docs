@@ -17,13 +17,13 @@ All Rights Reserved. (Contributor contact(s):________________[Insert hyperlink/a
 
 -->
 
-# OpenIndiana Handbook - Common Tasks
+# Hipster Handbook - Common Tasks
 
-<!-- NOTE: --> <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
 <div class="well">
-
-This document is a work in progress (draft).
-
+<p>This is a <b>DRAFT</b> document which may contain errors!</p>
+<p>Help us improve and expand this site.</p>
+<p>Please see the <b>Contrib</b> section for more details about joining the OpenIndiana Documentation Team.</p>
 </div>
 
 < place holder for introduction content >
@@ -31,7 +31,14 @@ This document is a work in progress (draft).
 
 ## Basic UNIX commands
 
-< place holder >
+In addition to native command line system administration tools, OpenIndiana also includes the GNU core utilities suite.
+When working with basic UNIX commands, most likely you will be using the GNU core utilities.
+For learning to navigate the OpenIndiana command line environment, Linux command line books are very helpful.
+
+One of the best books currently available is [The Linux Command Line](http://linuxcommand.org/tlcl.php) by William Shotts.
+If you want to quickly become a command line guru, this is the book to read.
+Best of all, it was released under a Creative Commons license and can be downloaded for free.
+Print versions are also available.
 
 
 ## Basic system administration
@@ -41,6 +48,10 @@ This document is a work in progress (draft).
 ITEMS TO WRITE ABOUT:
 
 * Adding users, etc.
+* Shutting down the system
+    * `shutdown [options]`
+    * `reboot`
+    * `halt`
 
 </div>
 
@@ -62,6 +73,11 @@ ITEMS TO WRITE ABOUT:
     * Configuring font anti-aliasing
     * Desktop backgrounds
 
+In regards to the default terminal emulator, see: <https://www.illumos.org/issues/7525>
+
+* we introduce mediator x-terminal-emulator for link /usr/bin/x-terminal-emulator with possible implementations gnome-terminal, mate-terminal and xterm;
+* mate-terminal implementation has the highest priority (if it is installed, by default it wins);
+* glib is modified to use link /usr/bin/x-terminal-emulator if it's found for running applications with Terminal=true.
 </div>
 
 

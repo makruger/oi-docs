@@ -21,15 +21,16 @@ All Rights Reserved. (Contributor contact(s):________________[Insert hyperlink/a
 The process for contributing to OpenIndiana Docs is simple and follows the same best practices used in the development of the OpenIndiana distribution.
 
 
-<!-- NOTE: --> <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
 <div class="well">
 First and foremost, we understand using development tools and techniques to write end user documentation is not for everyone.
 For this reason, we're happy to accept your contribution in any format you wish to provide.
 
-We'll happy accept contributions in plain text, .doc, .docx, .odt, html, xml, latex, pdf, GitHub Gist, etc.
-From there, we will review the document for conversion to markdown and subsequent incorporation into OpenIndiana Docs.
+After receiving your submission, we will review the document for conversion to markdown and subsequent incorporation into OpenIndiana Docs.
+Contributions may be submitted in plain text, .doc, .docx, .odt, html, xml, latex, pdf, GitHub Gist, etc.
 
-In a nutshell, if you think your contribution can be helpful to the greater OpenIndiana community, we'll be happy to review it.
+In summary, if you believe your contribution would be helpful to the greater OpenIndiana community, we'll be willing to review it.
+For further information, please contact us via one of the methods provided below.
 
 To make a suggestion or report a problem with a document, please make your request by submitting a [Github issue](https://github.com/OpenIndiana/oi-docs/issues).
 
@@ -39,8 +40,6 @@ You may also inquire via IRC:
 
 * [#openindiana (freenode)](irc://irc.freenode.net/openindiana)
 * [#oi-dev (freenode)](irc://irc.freenode.net/oi-dev)
-
-
 </div>
 
 
@@ -59,8 +58,16 @@ If you haven't already, sign up for a [Github](https://github.com) account.
 | Fedora | `dnf install git`
 | OpenIndiana | `pkg install git`
 
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
+<div class="well">
 After GIT is installed, be sure to configure your name and email address.
-For further details, see: <https://help.github.com/articles/set-up-git/>
+
+For further details about configuring GIT, see: <https://help.github.com/articles/set-up-git/>
+
+Also, if you need a good tutorial for quickly getting up to speed with GIT, see here: <http://rypress.com/tutorials/git/index>
+
+Fear not though, only basic git commands are required for working with OI-DOCS.
+</div>
 
 
 #### Install python-pip
@@ -71,7 +78,7 @@ For further details, see: <https://help.github.com/articles/set-up-git/>
 | Centos/RHEL | `yum install python-pip`
 | Debian/Mint/Ubuntu | `apt-get install python-pip`
 | Fedora | `dnf install pythop-pip`
-| OpenIndiana | `pkg install pip`
+| OpenIndiana | N/A - (MKDocs now in Hipster repository)
 
 
 #### Install rubygems
@@ -87,10 +94,14 @@ For further details, see: <https://help.github.com/articles/set-up-git/>
 
 #### Install mkdocs
 
-* Most operating systems (including OpenIndiana): `pip install mkdocs`
-* Verify your installation with `mkdocs --version`
+For OpenIndiana Hipster, MKDocs and all of it's dependencies have been packaged and are available in the OI Hipster repository.
+So, if you're already running Hipster, installing MKDocs is as simple as: `pkg install mkdocs`
 
-<!-- NOTE: --> <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
+* Most other operating systems: `pip install mkdocs`
+
+After MKDocs has been installed, be sure to verify your installation with `mkdocs --version`
+
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
 <div class="well">
 If you experience difficulties installing mkdocs, try using the python 3 version of `pip`.
 
@@ -101,6 +112,8 @@ For example:
 
 
 #### Install Markdown Lint (mdl)
+
+For most operating systems:
 
 * `gem install mdl`
 
@@ -184,7 +197,7 @@ oi-docs/
 | README.md | Git readme
 | site/ | Live preview folder (no edits)
 
-<!-- WARNING: --> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> **WARNING:**
+<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> **WARNING:**
 <div class="well">
 
 * Please do **NOT** perform any work within the `site/` folder.
@@ -228,7 +241,7 @@ For example: `vim somefile.md`
 Some text editors (Atom, VIM, etc.) natively include Markdown syntax highlighting (or offer it as a plugin).
 
 
-<!-- NOTE: --> <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
 <div class="well">
 Major changes should be performed within a separate branch, appropriately named to reflect the changes being made.
 </div>
@@ -265,18 +278,28 @@ See the code snippet below for examples.
 
 To assist with the content authoring process, it may be helpful to visualize your changes using a live preview.
 
-* From the root of the website-2.0 folder:
-    * Type: `mkdocs serve`
+* From the root of the `oi-docs/` directory:
+    * Type: `mkdocs serve` and press enter.
     * Open your web browser to 127.0.0.1:8000.
 
-To shut down the live preview web server, use [CTRL] + [C].
+Each time you save your changes, the site page is automatically reloaded within your web browser.
+
+To shut down the live preview web server, use `CTRL` + `C`.
+
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
+<div class="well">
+If you wish to preview your changes on a remotely networked system or on a networked mobile device such as a tablet, the site can also be served on your LAN IP address.
+
+To do so, issue the following command: `mkdocs serve --dev-addr=0.0.0.0:8000`
+</div>
+
 
 ## Running Markdown Lint (locally)
 
 Markdown Lint is used to check your changes for Markdown syntax errors.
 Prior to submitting a pull request (PR), please consider running Markdown Lint locally on your computer.
 
-From the root site folder (website-2.0) execute the following command:
+From the root of the `oi-docs/` directory, execute the following command:
 
 ```bash
 mdl -s markdownlint-rules.rb .
@@ -286,7 +309,7 @@ Markdown Lint will automatically traverse the entire folder structure looking fo
 Alternately you may also run `mdl` on a specific file.
 Simply replace the period (.) with the path to the file.
 
-<!-- NOTE: --> <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
 <div class="well">
 
 Before you can run `mdl`, it may be necessary to add the path to your `$PATH` variable.
@@ -357,7 +380,7 @@ For example: `https://github.com/your-user-name/oi-docs`
 
 Pull requests are used to request a _pull in_ of changes from your fork to the master repository.
 
-<!-- NOTE: --> <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
+<i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
 <div class="well">
 After a pull request has been submitted, and for the duration of time your pull request remains open and uncommitted to the OI-DOCS master repository, any additional commits you make to your own fork of the oi-docs repository will automatically be included in your open pull request.
 </div>
