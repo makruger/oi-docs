@@ -38,6 +38,32 @@ This collection of documents is aimed at providing a comprehensive source of gui
 While our aim is to address as many facets of OpenIndiana use and administration as possible, some topics are simply too complex and beyond the scope of an introductory end user handbook.
 In such cases external sources of information will be provided in the form of references to other web sites, man pages, or printed books.
 
+## Conventions
+
+### Commandlines
+
+Commandlines starting with a # character means that they should be run as root.
+Most of these examples can also be invoked with
+[pfexec(1)](https://illumos.org/man/1/pfexec)
+ or sudo(1m) instead.
+
+You can login as root using [su(1m)](https://illumos.org/man/1m/su).
+
+An example of a commandline intended to be invoked as root:
+
+```
+# dd if=image.usb of=/dev/sdb
+```
+
+Commandlines starting with a $ character means that they should be run as a
+regular user.
+
+An example of a commandline intended to be invoked as a regular user:
+
+```
+$ prstat
+```
+
 ## Hipster Software Releases
 
 Approximately every six months, the OpenIndiana project releases a snapshot of the Hipster rolling release branch.
@@ -175,10 +201,10 @@ To work around this limitation, be sure to remove any previously installed insta
 * Run the following command to download and boot the OpenIndiana vagrant box:
 
 ```
-mkdir ~/openindiana_test
-cd ~/openindiana_test
-vagrant init openindiana/hipster
-vagrant up --provider virtualbox
+$ mkdir ~/openindiana_test
+$ cd ~/openindiana_test
+$ vagrant init openindiana/hipster
+$ vagrant up --provider virtualbox
 ```
 
 This will create a file titled _Vagrantfile_ under the ~/openindiana_test directory.
@@ -187,13 +213,13 @@ The Vagrant box will also be booted.
 * Once, the Vagrant box virtual machine is online, connect to it using the following command:
 
 ```
-vagrant ssh
+$ vagrant ssh
 ```
 
 * To destroy the OpenIndiana Vagrant instance, issue the following command:
 
 ```
-vagrant destroy
+$ vagrant destroy
 ```
 
 
@@ -281,8 +307,8 @@ If you wish to purchase a ready made DVD or USB drive there is also [OSDISC.COM]
 Download example:
 
 ```
-wget "http://dlc.openindiana.org/isos/hipster/OI-hipster-gui-20161030.iso"
-wget "http://dlc.openindiana.org/isos/hipster/OI-hipster-gui-20161030.iso.sha256sum"
+$ wget "http://dlc.openindiana.org/isos/hipster/20170502/OI-hipster-gui-20170502.iso"
+$ wget "http://dlc.openindiana.org/isos/hipster/20170502/OI-hipster-gui-20170502.iso.sha256sum"
 ```
 
 ### Checking the MD5/SHA
@@ -290,8 +316,9 @@ wget "http://dlc.openindiana.org/isos/hipster/OI-hipster-gui-20161030.iso.sha256
 Checksum verification example:
 
 ```
-sha256sum --check OI-hipster-gui-20161030.iso.sha256sum
-OI-hipster-gui-20161030.iso: OK
+$ sha256sum --check OI-hipster-gui-20170502.iso.sha256sum
+OI-hipster-gui-20170502.iso: OK
+$
 ```
 
 
@@ -307,8 +334,9 @@ The syntax of the command is: `cdrecord dev=device imagefile.iso`
 
 Examples:
 
-* `cdrecord dev=/dev/rdsk/c4t1d0p0 imagefile.iso`
-* `cdrecord dev=4,1,0 imagefile.iso`
+```# cdrecord dev=/dev/rdsk/c4t1d0p0 imagefile.iso```
+
+```# cdrecord dev=4,1,0 imagefile.iso```
 
 
 <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
@@ -329,10 +357,9 @@ Locating your DVD or CD writing device:
 
 For example:
 
-`cdrecord -scanbus`
-
 ```
-Cdrecord-ProDVD-ProBD-Clone 3.00 (i386-pc-solaris2.11) Copyright (C) 1995-2010 J�rg Schilling
+$ cdrecord -scanbus
+Cdrecord-ProDVD-ProBD-Clone 3.00 (i386-pc-solaris2.11) Copyright (C) 1995-2010 Jörg Schilling
 Warning: Using USCSI interface.
 Using libscg version 'schily-0.9'.
 scsibus4:
@@ -344,6 +371,7 @@ scsibus4:
         4,5,0   405) *
         4,6,0   406) *
         4,7,0   407) *
+$
 ```
 
 <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
@@ -359,9 +387,8 @@ For example: `cdrecord dev=4,1,0 imagefile.iso`
 
 For example:
 
-`rmformat -l`
-
 ```
+$ rmformat -l
 Looking for devices...
      1. Logical Node: /dev/rdsk/c4t1d0p0
         Physical Node: /pci@0,0/pci17aa,20f8@1f,2/cdrom@1,0
@@ -371,6 +398,7 @@ Looking for devices...
         Size: 810.2 MB
         Label: <None>
         Access permissions: Medium is not write protected.
+$
 ```
 
 <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
@@ -378,7 +406,7 @@ Looking for devices...
 
 When using `rmformat -l` to determine the device name, specify the device using the _Logical Node_.
 
-For example: `cdrecord dev=/dev/rdsk/c4t1d0p0 imagefile.iso`
+For example: `# cdrecord dev=/dev/rdsk/c4t1d0p0 imagefile.iso`
 
 </div>
 
@@ -399,7 +427,7 @@ The syntax of the command is: `wodim -v dev=device -dao imagefile.iso`
 
 For example:
 
-`wodim -v dev=/dev/sr0 -dao imagefile.iso`
+`# wodim -v dev=/dev/sr0 -dao imagefile.iso`
 
 
 Locating your DVD or CD writing device:
@@ -408,15 +436,15 @@ Locating your DVD or CD writing device:
 
 For example:
 
-`lsblk`
-
 ```
+$ lsblk
 NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 sda      8:0    0 232.9G  0 disk
 ├─sda1   8:1    0 227.8G  0 part /
 ├─sda2   8:2    0     1K  0 part
 └─sda5   8:5    0     4G  0 part
 sr0     11:0    1  1024M  0 rom
+$
 ```
 
 **Linux GUI** <i class="fa fa-linux fa-lg" aria-hidden="true"></i>
@@ -439,8 +467,10 @@ For further information, please consult the help documentation for your Linux di
 
 **MAC Console** <i class="fa fa-apple fa-lg" aria-hidden="true"></i>
 
-```
-growisofs -Z /dev/dvdrw=image.iso
+<!-- had to specify java (other langs may work) to fix the formatting -->
+
+```java
+# growisofs -Z /dev/dvdrw=image.iso
 ```
 
 
@@ -495,21 +525,9 @@ The method to use depends on the release date of the USB image you intend to wri
 
 <i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i> **CAUTION:**
 <div class="well">
-OpenIndiana Hipster does not yet support USB 3.0 or UEFI.
+OpenIndiana Hipster does not yet support UEFI.
 
-* If you intend to install OpenIndiana Hipster on a system with USB 3.0 and or UEFI capabilities, please be sure to disable these features.
-* When attaching backward compatible USB 3.0 flash devices to your system, please ensure they are *NOT* attached to a USB 3.0 port.
-
-  <div class="well">
-
-  <b>Breaking USB 3.0 news update - November 18, 2016</b>
-
-  <ul>
-    <li>The OpenIndiana Project is now testing USB 3.0 (XHCI) experimentally!</li>
-    <li>If you wish to try using our new experimental XHCI support, see the link below for additional details:</li>
-    <li><a href="https://openindiana.org/pipermail/oi-dev/2016-November/004991.html">USB 3.0 (xHCI) Beta Testing and Review</a></li>
-  </ul>
-  </div>
+* If you intend to install OpenIndiana Hipster on a system, which supports UEFI boot, please be sure to boot the system in legacy mode.
 </div>
 
 
@@ -531,7 +549,7 @@ OpenIndiana Hipster does not yet support USB 3.0 or UEFI.
 
 </div>
 
-* Download the appropriate OpenIndiana 1G or 2G header file
+* Download the appropriate OpenIndiana <a href="http://dlc.openindiana.org/isos/archive/1G.header">1G</a> or <a href="http://dlc.openindiana.org/isos/archive/2G.header">2G</a> header file
     * There are 2 unique USB header files (1G and 2G).
     * Please ensure you have selected the correct file as the files are **NOT** interchangeable.
         * The 1G.header is only suitable for use with the text installer (Command line console).
@@ -593,19 +611,19 @@ In the command below, replace `X` with the appropriate letter for your USB devic
 #### Method 1 (New releases)
 
 ```
-sudo dd bs=4M if=./image.usb of=/dev/sdX status=progress && sync
+# dd bs=4M if=./image.usb of=/dev/sdX status=progress && sync
 ```
 
 #### Method 2 (Legacy releases)
 
 ```
-cat 1G.header image.usb | sudo dd bs=1024k of=/dev/sdX
+# cat 1G.header image.usb | dd bs=1024k of=/dev/sdX
 ```
 
 For live images larger than 1GB, use the following command instead.
 
 ```
-cat 2G.header image.usb | sudo dd bs=1024k of=/dev/sdX
+# cat 2G.header image.usb | dd bs=1024k of=/dev/sdX
 ```
 
 
@@ -617,7 +635,7 @@ cat 2G.header image.usb | sudo dd bs=1024k of=/dev/sdX
 In the command below, replace each `X` with appropriate number for your USB device.
 
 ```
-sudo /usr/bin/dd if=./image.usb of=/dev/rdsk/cXtXdXpX bs=4194304
+# /usr/bin/dd if=./image.usb of=/dev/rdsk/cXtXdXpX bs=4194304
 ```
 
 #### Method 2 (Legacy releases)
@@ -626,9 +644,10 @@ For illumos based distributions including OpenIndiana, a script [(USBCOPY)](http
 
 Be sure to run as root or with SUDO as the script exits if not run with elevated permissions.
 
-`sudo ./usbcopy image.usb`
+<!-- had to specify java (other langs may work) to fix the formatting -->
 
-```
+```java
+# ./usbcopy image.usb
 Found the following USB devices:
 0:    devices/dev/rdsk/c4t0d0p0    3.9 GB    USB    DISK 2.0       1.00
 Enter the number of your choice: 0
@@ -641,6 +660,7 @@ Finished 1643 MB in 685 seconds (2.3MB/s)
 0 block(s) re-written due to verification failure
 Installing grub to USB device /dev/rdsk/c4t0d0s0
 Completed copy to USB
+#
 ```
 
 ### Windows
@@ -683,21 +703,10 @@ OpenIndiana does not yet support the following technologies:
 
 * Secure boot (UEFI boot path validation)
 * UEFI (Unified Extensible Firmware Interface)
-* USB 3.0 (eXtensible Host Controller Interface)
 
 To successfully boot the OpenIndiana installer, these technologies must first be disabled.
 For further information, consult the manufacturers documentation for your computer hardware.
 
-<div class="well">
-
-<b>Breaking USB 3.0 news update - November 18, 2016</b>
-
-<ul>
-<li>The OpenIndiana Project is now testing USB 3.0 (XHCI) experimentally!</li>
-<li>If you wish to try using our new experimental XHCI support, see the link below for additional details:</li>
-<li><a href="https://openindiana.org/pipermail/oi-dev/2016-November/004991.html">USB 3.0 (xHCI) Beta Testing and Review</a></li>
-</ul>
-</div>
 </div>
 
 
@@ -711,7 +720,8 @@ See the notes below for optimizing OpenIndiana for several popular hypervisors.
 | --- | ---
 | Virtualbox | OS type = Solaris 11 64-bit
 | Vmware player | OS type = Solaris 11 64-bit
-| KVM | <ul><li>OS type = Sun OpenSolaris</li><li>Disk = SATA</li><li>Remove USB Tablet</li><li>NIC = e1000</li><li>sound = AC97</li><li>Processor = Copy host CPU configuration</li><li>Disable CPU feature _'xsave'_</li><li>Video = QXL</li></ul>
+| KVM | <ul><li>OS type = Sun OpenSolaris</li><li>Disk = SATA</li><li>Remove USB Tablet</li><li>NIC = e1000</li><li>sound = AC97</li><li>Processor = Copy host CPU configuration</li><li>Disable CPU feature _'xsave'_</li><li>Video = QXL (QXL driver not supported, but the extra video memory helps)</li><li>Display = VNC (Spice not supported)</li></ul>
+| Hyper-V | Select single CPU, generation 1 VM, and legacy NIC.
 
 <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> **NOTE:**
 <div class="well">
@@ -2143,19 +2153,30 @@ Here are some of the available tools:
 <div class="well">
 ITEMS TO WRITE ABOUT:
 
-* <https://pkgsrc.joyent.com/>
-* <https://pkgsrc.joyent.com/install-on-illumos/>
-
-* Need to answer the questions - Where and how can I install more software?
-* Discuss 3rd party package managers (PKGIN, etc.)
-* Discuss the various 3rd party repos (opencsw, sfe, pkgsrc.joyent, etc.), what's available in them, and which might break compatibility, etc.
-* Describe SFE (SPEC FILES EXTRA) and how it differs from OI and other repos.
+* Need to answer the question “Where and how can I install more software?”
+* Discuss 3rd party package managers ([pkgin](http://pkgin.net/), etc.)
+* Discuss the various 3rd party repos, what's available in them, and which
+  might break compatibility, etc.:
+    * [pkgsrc](https://pkgsrc.org/)
+      ([wiki page](https://wiki.openindiana.org/oi/pkgsrc+in+OI),
+      [NetBSD wiki page](https://wiki.netbsd.org/pkgsrc/how_to_use_pkgsrc_on_solaris/))
+    * [Joyent's pkgsrc binary packages](https://pkgsrc.joyent.com/)
+      ([install on illumos](https://pkgsrc.joyent.com/install-on-illumos/),
+      [wiki page](https://wiki.openindiana.org/oi/3.+Installing+software+and+package+management))
+    * [opencsw](http://sfe.opencsw.org/)
+    * [SFE (spec-files-extra)](http://pkgbuild.sourceforge.net/spec-files-extra/)
+      ([wiki page](https://wiki.openindiana.org/oi/SFE),
+      [other wiki page](https://wiki.openindiana.org/oi/Spec+Files+Extra+Repository)):
+      describe and explain how it differs from OI and other repos.
 * How to add additional repos, etc.
 * How to compile your own software.
-    * I think there is an existing wiki page for this.
-    * Given the limited number of IPS packages currently available, this is a pretty important subject to write about.
+    * Existing wiki pages:
+      [Knowledge base](https://wiki.openindiana.org/oi/Knowledge+Base+for+Compiling+and+Installing+Software+Not+Available+in+Package+Form),
+      [Compiling software on OpenIndiana](https://wiki.openindiana.org/oi/Compiling+software+on+OpenIndiana)
     * Also could look here (might be outdated):
-    * [web link](http://www.inetdaemon.com/tutorials/computers/software/operating_systems/unix/Solaris/compiling_software.shtml)
+      [Compiling Software on Solaris](http://www.inetdaemon.com/tutorials/computers/software/operating_systems/unix/Solaris/compiling_software.shtml)
+* Given the limited number of IPS packages currently available, these are
+  pretty important subjects to write about.
 
 </div>
 
@@ -2274,7 +2295,6 @@ Within a global zone, specific non-global zones can be created.
 Note the following limitations of support for non-global zones in the beadm utility and in related processes:
 
 * When using the `pkg update` command, the `-r` switch is required to upgrade all zones.
-* The `beadm` utility is not supported inside a non-global zone.
 * Non-global zone support is limited to ZFS support.
 Zones are not supported unless they are on ZFS.
 * Zones are not supported in the rpool/ROOT namespace.
@@ -2349,4 +2369,3 @@ Write about:
     * Using the `add_drv` command
 * Adding device ID's to `/etc/driver_aliases`, and `/etc/driver_classes`, etc.
 </div>
-
